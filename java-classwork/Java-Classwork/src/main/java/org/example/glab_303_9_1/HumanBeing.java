@@ -34,4 +34,12 @@ public class HumanBeing {
         this.bmi = bmi;
     }
 
+    @Override
+    public String toString() {
+        return "HumanBeing{" +
+                "weight=" + weight +
+                ", height=" + height +
+                ", bmi=" + bmi +
+                '}';
+    }
 }

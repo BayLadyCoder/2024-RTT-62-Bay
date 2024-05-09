@@ -10,6 +10,7 @@ public class EncapsulationExample {
 
         // using getters of HumanBeing
         System.out.println("Person has "+h1.getWeight()+" kgs and is "+h1.getHeight()+" meters in height, which results in BMI of "+h1.getBmi());
+        System.out.println(h1.toString());
     }
 
     public static float calculateBmi(HumanBeing h1){
