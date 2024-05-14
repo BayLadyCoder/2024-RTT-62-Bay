@@ -1,4 +1,4 @@
-package org.example.GLABS.glab_303_5_2;
+package org.example.GLABS.GL_303_5_loops.glab_303_5_2;
 
 import java.util.Scanner;
 

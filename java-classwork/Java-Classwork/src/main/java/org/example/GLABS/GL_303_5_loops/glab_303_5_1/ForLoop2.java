@@ -1,4 +1,4 @@
-package org.example.GLABS.glab_303_5_1;
+package org.example.GLABS.GL_303_5_loops.glab_303_5_1;
 
 public class ForLoop2 {
     public static void main(String[] args) {
