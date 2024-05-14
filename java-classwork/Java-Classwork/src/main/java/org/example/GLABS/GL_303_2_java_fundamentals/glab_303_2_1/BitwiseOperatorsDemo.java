@@ -1,4 +1,4 @@
-package org.example.GLABS.glab_303_2_1;
+package org.example.GLABS.GL_303_2_java_fundamentals.glab_303_2_1;
 
 public class BitwiseOperatorsDemo {
     public static void main(String[] args) {

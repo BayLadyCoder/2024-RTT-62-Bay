@@ -1,4 +1,4 @@
-package org.example.GLABS.glab_303_2_2;
+package org.example.GLABS.GL_303_2_java_fundamentals.glab_303_2_2;
 
 public class ExplicitTest {
     public static void main(String[] args) {
