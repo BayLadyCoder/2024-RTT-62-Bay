@@ -1,4 +1,4 @@
-package org.example.GLABS.glab_303_10_3;
+package org.example.GLABS.GL_303_10_polymorphism_object_type_cast_abstraction_interface.glab_303_10_3;
 
 public abstract class Shape {
     protected String color;
