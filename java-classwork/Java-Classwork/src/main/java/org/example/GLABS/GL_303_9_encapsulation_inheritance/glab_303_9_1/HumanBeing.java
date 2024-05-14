@@ -1,4 +1,4 @@
-package org.example.GLABS.glab_303_9_1;
+package org.example.GLABS.GL_303_9_encapsulation_inheritance.glab_303_9_1;
 
 public class HumanBeing {
     private float weight;
