@@ -1,4 +1,4 @@
-package org.example.GLABS.glab_303_3_1;
+package org.example.GLABS.GL_303_3_wrapper_class_math_char_string.glab_303_3_1;
 
 public class CharAtDemo {
     public static void main(String[] args) {

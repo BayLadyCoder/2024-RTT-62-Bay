@@ -1,4 +1,4 @@
-package org.example.GLABS.glab_303_3_1;
+package org.example.GLABS.GL_303_3_wrapper_class_math_char_string.glab_303_3_1;
 
 // importing Arrays to convert array to string
 // used for printing arrays
