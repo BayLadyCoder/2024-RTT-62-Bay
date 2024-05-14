@@ -1,10 +1,14 @@
 package org.example.GLABS.GL_303_10_polymorphism_object_type_cast_abstraction_interface.glab_303_10_4;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.List;
+
 public class Circle extends Shape implements Movable {
     protected double radius;
     private int x, y;   // x and y coordinates of the point
     private final double PI = Math.PI;
-
+    Map<String,List<String>> listMap= new HashMap<>();
     /**
      * Constructs a MovablePoint instance at the given x and y
      */
