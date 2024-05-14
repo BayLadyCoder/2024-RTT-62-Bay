@@ -1,4 +1,4 @@
-package org.example.GLABS.glab_303_11_1.generic_class;
+package org.example.GLABS.GL_303_11_generic_type_collection_classes.glab_303_11_1.generic_class;
 
 public class GenericMultipleDatatype<Datatypeone, DatatypeTwo> {
     Datatypeone valueOne;

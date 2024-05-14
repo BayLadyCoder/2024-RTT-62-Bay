@@ -1,4 +1,4 @@
-package org.example.GLABS.glab_303_11_5;
+package org.example.GLABS.GL_303_11_generic_type_collection_classes.glab_303_11_5;
 
 import java.util.TreeSet;
 import java.util.Iterator;
