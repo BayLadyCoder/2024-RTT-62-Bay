@@ -1,4 +1,4 @@
-package org.example.practice_assignments.pa_303_11_1;
+package org.example.practice_assignments.pa_303_11_1.List;
 
 import java.util.*;
 
