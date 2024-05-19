@@ -1,4 +1,4 @@
-package org.example.GLABS.GL_303_13_1_files_io.example_2;
+package org.example.GLABS.GL_303_13_files_io_nio.glab_303_13_1.example_2;
 
 public class Course {
     private String code, course_name, instructor_name;

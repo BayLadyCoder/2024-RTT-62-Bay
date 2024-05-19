@@ -1,4 +1,4 @@
-package org.example.GLABS.GL_303_13_1_files_io.example_1;
+package org.example.GLABS.GL_303_13_files_io_nio.glab_303_13_1.example_1;
 
 import java.io.File;
 import java.io.FileNotFoundException;
