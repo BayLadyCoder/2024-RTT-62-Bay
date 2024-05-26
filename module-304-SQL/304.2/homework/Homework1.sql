@@ -28,6 +28,10 @@ SELECT job_title,count(*) as count FROM employees GROUP BY job_title;
 -- question 0.5
 -- I want to see a list of all payments each customer has made.  
 -- Order the list by custoemr name ascending, then by the payment amount descending
+SELECT c.customer_name, p.amount 
+FROM customers c, payments p
+WHERE p.customer_id = c.id
+ORDER BY c.customer_name, p.amount DESC;
 
 -- question 0.6
 -- I want to see a list of products that have never been sold.   
