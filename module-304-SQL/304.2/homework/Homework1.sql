@@ -41,6 +41,7 @@ ORDER BY c.customer_name, p.amount DESC;
 
 -- question 0.7
 -- are there any customers that have never made an order
+SELECT * FROM customers WHERE id NOT IN (SELECT customer_id FROM orders);
 
 -- Question 1
 -- How many customer are handled by each office.  
