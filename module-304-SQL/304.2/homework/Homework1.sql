@@ -23,6 +23,7 @@ WHERE e.office_id = o.id;
 -- question 0.4
 -- I want to see the totaly number of each employee type based on job title.. 
 -- result should the job title and the number of employess with that job title.
+SELECT job_title,count(*) as count FROM employees GROUP BY job_title;
 
 -- question 0.5
 -- I want to see a list of all payments each customer has made.  
