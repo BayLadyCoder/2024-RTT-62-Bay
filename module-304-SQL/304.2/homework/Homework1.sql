@@ -55,6 +55,9 @@ GROUP BY o.city;
 -- I want to see the products with the most margin at the top of the table.  
 -- Include the product name, buy price, msrp, and margin in the results.  
 -- Margin is calculated (MSPR - buy_price) 
+SELECT product_name, buy_price, msrp, msrp - buy_price AS margin
+FROM products
+ORDER BY margin DESC;
 
 -- Question 2.5
 -- I want to see the top 5 customers in each state based on margin 
