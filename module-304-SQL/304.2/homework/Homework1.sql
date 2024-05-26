@@ -11,11 +11,14 @@ SELECT count(*) as count, productline_id FROM products GROUP BY productline_id;
 SELECT c.customer_name, c.contact_firstname, c.contact_lastname, 
 	   e.firstname AS sale_rep_firstname, e.lastname AS sale_rep_lastname
 FROM customers c, employees e
-WHERE c.sales_rep_employee_id = e.id
+WHERE c.sales_rep_employee_id = e.id;
 
 -- question 0.3
 -- I want to see a list of employees in each office.   
 -- Show the office name and the employee name
+SELECT o.city AS office, CONCAT(e.firstname," ", e.lastname) AS employee_name
+FROM offices o, employees e
+WHERE e.office_id = o.id;
 
 -- question 0.4
 -- I want to see the totaly number of each employee type based on job title.. 
