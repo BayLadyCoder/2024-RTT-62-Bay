@@ -1,12 +1,17 @@
 -- Homework 1
 -- Question 0.1
 -- I want to see the count of the number of products in each product line
+SELECT count(*) as count, productline_id FROM products GROUP BY productline_id;
 
 -- question 0.2
 -- I want to see a list of employees and all of the customers for that employee.   
 -- Employee name will be duplicated in the result set.   
 -- I want to see the employee first and last name
 -- and the customer contact first and last name as well as the customer name
+SELECT c.customer_name, c.contact_firstname, c.contact_lastname, 
+	   e.firstname AS sale_rep_firstname, e.lastname AS sale_rep_lastname
+FROM customers c, employees e
+WHERE c.sales_rep_employee_id = e.id
 
 -- question 0.3
 -- I want to see a list of employees in each office.   
