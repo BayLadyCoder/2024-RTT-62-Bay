@@ -46,6 +46,10 @@ SELECT * FROM customers WHERE id NOT IN (SELECT customer_id FROM orders);
 -- Question 1
 -- How many customer are handled by each office.  
 -- I want to see the office name and the count of the number of customers in that office.
+SELECT o.city, COUNT(*) 
+FROM customers c, offices o, employees e 
+WHERE c.sales_rep_employee_id = e.id AND e.office_id = o.id 
+GROUP BY o.city;
 
 -- Question 2
 -- I want to see the products with the most margin at the top of the table.  
