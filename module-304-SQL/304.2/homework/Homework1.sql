@@ -71,6 +71,7 @@ ORDER BY margin DESC;
 -- Question 5 
 -- I want to see all of the orders that happened in 2004.   
 -- You can use a function called year(order_date) = 2004
+SELECT * FROM orders WHERE YEAR(order_date) = 2004;
 
 -- Question 6
 -- I want to see the total amount of all orders grouped by the year
