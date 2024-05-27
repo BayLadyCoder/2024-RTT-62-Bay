@@ -91,6 +91,15 @@ SELECT p.product_name, COUNT(p.id) FROM products p, orderdetails od WHERE od.pro
 -- how many products would be out of stock baed on the amount sold acrosss tiem.  
 -- not sure if the data will spoort this .. basically 
 -- looking for any product where the sum of the quantity sold is greater than the quantity in stock
+SELECT 
+	p.product_name, 
+    SUM(od.quantity_ordered) AS ordered, 
+    p.quantity_in_stock AS in_stock, 
+    p.quantity_in_stock - SUM(od.quantity_ordered) AS maybe_out_of_stock
+FROM orderdetails od, products p
+WHERE od.product_id = p.id
+GROUP BY p.id
+ORDER BY maybe_out_of_stock;
 
 -- question 7.9
 -- I want to see the distinct order status ordered alphabetically
