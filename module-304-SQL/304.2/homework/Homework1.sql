@@ -90,6 +90,7 @@ SELECT p.product_name, COUNT(p.id) FROM products p, orderdetails od WHERE od.pro
 
 -- question 7.9
 -- I want to see the distinct order status ordered alphabetically
+SELECT DISTINCT status FROM orders ORDER BY status;
 
 -- Question 8
 -- I want to see the office name and the distinct product lines that have been sold in that office.  
