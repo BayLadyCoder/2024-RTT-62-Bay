@@ -81,6 +81,7 @@ SELECT p.product_name, SUM(od.quantity_ordered) FROM products p, orderdetails od
 
 -- question 7.5
 -- how many times has each product appeared in an order reguardless of how many were purchased.
+SELECT p.product_name, COUNT(p.id) FROM products p, orderdetails od WHERE od.product_id = p.id GROUP BY p.id;
 
 -- question 7.6
 -- how many products would be out of stock baed on the amount sold acrosss tiem.  
