@@ -74,6 +74,9 @@ ORDER BY margin DESC;
 
 -- Question 6
 -- I want to see the total amount of all orders grouped by the year
+SELECT COUNT(*), YEAR(o.order_date)
+FROM orders o
+GROUP BY YEAR(o.order_date);
 
 -- Question 7
 -- I want to see the top 5 products based on quantity sold across all orders
