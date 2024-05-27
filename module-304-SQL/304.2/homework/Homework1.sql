@@ -125,7 +125,16 @@ SELECT DISTINCT status FROM orders ORDER BY status;
 -- I want to see the office name and the distinct product lines that have been sold in that office.  
 -- This will require joining almost all of the tables.  
 -- select distinct o.name as office_name, pl.productlines as product_line_name  ....
-
+SELECT DISTINCT offices.city AS office_name, pl.product_line AS product_line_name
+FROM offices, productlines pl, customers c, employees e, orders o, orderdetails od, products p
+WHERE o.customer_id = c.id
+	  AND c.sales_rep_employee_id = e.id
+      AND od.order_id = o.id
+      AND od.product_id = p.id
+      AND p.productline_id = pl.id
+ORDER BY office_name, product_line_name;
+      
+      
 
 
 
