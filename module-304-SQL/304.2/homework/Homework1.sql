@@ -77,6 +77,7 @@ ORDER BY margin DESC;
 
 -- Question 7
 -- I want to see the top 5 products based on quantity sold across all orders
+SELECT p.product_name, SUM(od.quantity_ordered) FROM products p, orderdetails od WHERE od.product_id = p.id GROUP BY p.id;
 
 -- question 7.5
 -- how many times has each product appeared in an order reguardless of how many were purchased.
