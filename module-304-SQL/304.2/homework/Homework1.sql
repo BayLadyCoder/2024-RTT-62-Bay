@@ -61,6 +61,34 @@ ORDER BY margin DESC;
 
 -- Question 2.5
 -- I want to see the top 5 customers in each state based on margin 
+SELECT * FROM (SELECT c.customer_name, c.state, SUM(od.quantity_ordered * (p.msrp-p.buy_price)) AS margin,
+	   ROW_NUMBER() OVER (PARTITION BY c.state ORDER BY SUM(od.quantity_ordered * (p.msrp-p.buy_price)) DESC) AS state_rank
+FROM customers c, orderdetails od, products p, orders o
+WHERE o.customer_id = c.id
+      AND od.order_id = o.id
+      AND od.product_id = p.id
+      AND c.country = "USA"
+      AND c.state IS NOT NULL
+GROUP BY c.id, c.state
+ORDER BY c.state, margin DESC) whatever_table_name
+where state_rank <= 5;
+
+WITH result_table AS (
+	SELECT c.customer_name, c.state, SUM(od.quantity_ordered * (p.msrp-p.buy_price)) AS margin,
+	ROW_NUMBER() OVER (PARTITION BY c.state ORDER BY SUM(od.quantity_ordered * (p.msrp-p.buy_price)) DESC) AS state_rank
+	FROM customers c, orderdetails od, products p, orders o
+	WHERE o.customer_id = c.id
+      AND od.order_id = o.id
+      AND od.product_id = p.id
+      AND c.country = "USA"
+      AND c.state IS NOT NULL
+	GROUP BY c.id, c.state
+	ORDER BY c.state, margin DESC)
+SELECT customer_name, state, margin, state_rank
+FROM result_table
+WHERE state_rank <= 5;
+
+
 
 -- Question 3
 --  I want to see the top 5 salesmen in the company based on the total amount sold
