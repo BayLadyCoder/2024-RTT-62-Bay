@@ -38,10 +38,17 @@ ORDER BY payment_date DESC;
 -- 5. Display the last Name, first Name, email address, and job title 
 -- of all employees working out of the San Francisco office. 
 -- The output should be sorted by “Last Name.”
-
+SELECT lastname, firstname, email, job_title
+FROM employees e, offices o
+WHERE e.office_id = o.id AND o.city = "San Francisco"
+ORDER BY lastname;
 
 -- 6. Display the name, product line, scale, 
 -- and vendor of all of the car products, both classic and vintage. 
 -- The output should display all vintage cars first 
 -- (sorted alphabetically by name), 
 -- and all classic cars last (also sorted alphabetically by name). 
+SELECT p.product_name, pl.product_line, p.product_scale, p.product_vendor
+FROM products p, productlines pl
+WHERE p.productline_id = pl.id
+ORDER BY pl.product_line DESC;
