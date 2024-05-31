@@ -23,11 +23,17 @@ ORDER BY c.contact_lastname;
 -- 3. Display each of the unique values of the status field in the orders table. 
 -- The output should be sorted alphabetically, ascending.
 -- Hint: The output should show exactly six rows.
+SELECT DISTINCT status
+FROM orders
+ORDER BY status;
 
-
--- 4. Display all fields from the payments table for payments made on or after January 1, 2005. 
+-- 4. Display all fields from the payments table for payments 
+-- made on or after January 1, 2005. 
 -- The output should be sorted by the payment date from highest to lowest.
-
+SELECT *
+FROM payments
+WHERE payment_date > "2005-01-01"
+ORDER BY payment_date DESC;
 
 -- 5. Display the last Name, first Name, email address, and job title 
 -- of all employees working out of the San Francisco office. 
