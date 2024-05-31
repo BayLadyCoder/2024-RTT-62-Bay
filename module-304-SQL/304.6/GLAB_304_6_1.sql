@@ -41,3 +41,24 @@ SELECT status AS "Order Status", COUNT(id) AS "Total Orders"
 FROM orders 
 GROUP BY status
 ORDER BY status;
+
+-- 4. Write a query to list, for each product line, 
+-- the total number of products sold from that product line. 
+-- The first column should be “Product Line” and the second should be “total Sold.” 
+-- Order by the second column, descending.
+SELECT product_line AS "Product Line", count(p.id) AS "Total Sold"
+FROM productlines pl, products p, orderdetails od
+WHERE p.productline_id = pl.id AND od.product_id = p.id
+GROUP BY pl.id
+ORDER BY 2 DESC;
+
+-- 4. SOLUTION
+SELECT 
+     pl.product_line AS 'Product Line', 
+     count(od.product_id) AS 'total Sold'
+FROM productlines pl JOIN products p 
+ON pl.id = p.productline_id
+ JOIN orderdetails od ON p.id = od.product_id
+GROUP BY pl.product_line
+ORDER BY 2 DESC;
+
