@@ -23,5 +23,15 @@ SELECT
 FROM products p, orderdetails od
 WHERE od.product_id = p.id
 GROUP BY p.id
-ORDER BY "Total Sale" DESC;
+ORDER BY SUM(od.quantity_ordered * od.price_each) DESC;
+
+-- 2. SOLUTION 
+SELECT 
+	p.product_name AS 'Product Name', 
+	SUM(od.quantity_ordered) AS 'Total # Ordered', 
+    SUM(od.quantity_ordered * od.price_each) AS 'Total Sale'
+FROM products p LEFT JOIN orderdetails od 
+ON p.id=od.product_id
+GROUP BY p.product_name, p.buy_price
+ORDER BY 3 DESC
 
