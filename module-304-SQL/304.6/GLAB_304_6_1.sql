@@ -33,5 +33,11 @@ SELECT
 FROM products p LEFT JOIN orderdetails od 
 ON p.id=od.product_id
 GROUP BY p.product_name, p.buy_price
-ORDER BY 3 DESC
+ORDER BY 3 DESC;
 
+-- 3. Write a query that lists order status and the number of orders with that status. 
+-- Column headers should be “Order Status” and “Total Orders.” Sort alphabetically by status.
+SELECT status AS "Order Status", COUNT(id) AS "Total Orders"
+FROM orders 
+GROUP BY status
+ORDER BY status;
