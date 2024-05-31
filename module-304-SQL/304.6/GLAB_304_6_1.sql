@@ -75,3 +75,16 @@ SELECT
 FROM payments
 GROUP BY YEAR(payment_date), MONTHNAME(payment_date) 
 ORDER BY payment_date;
+
+-- 6. Write a query to display the Name, Product Line, Scale, 
+-- and Vendor of all of the Car products, both classic and vintage. 
+-- The output should display all vintage cars first (sorted alphabetically by name), 
+-- and all classic cars last (also sorted alphabetically by name). 
+SELECT 
+	product_name AS Name, 
+    product_line AS "Product Line", 
+    product_scale AS "Scale", 
+    product_vendor AS "Vendor"
+FROM products p, productlines pl
+WHERE p.productline_id = pl.id AND product_line IN ("Classic Cars", "Vintage Cars")
+ORDER BY product_line DESC, product_name;
