@@ -62,3 +62,16 @@ ON pl.id = p.productline_id
 GROUP BY pl.product_line
 ORDER BY 2 DESC;
 
+-- 5. Your product team is requesting data to help them create a bar chart of monthly sales made since the company’s inception. 
+-- Write a query to output the month (January, February, etc.), 4-digit year, 
+-- and total sales for each month. The first column should be labeled ‘Month,’ 
+-- the second column should be labeled ‘Year,’ 
+-- and the third column should be labeled ‘Payments Received.’ 
+-- Values in the third column should be formatted as numbers with two decimals (e.g., 694,292.68).
+SELECT 
+   MONTHNAME(payment_date) AS Month, 
+   YEAR(payment_date) AS Year,
+   FORMAT(SUM(amount), 2) AS 'Payments Received'
+FROM payments
+GROUP BY YEAR(payment_date), MONTHNAME(payment_date) 
+ORDER BY payment_date;
