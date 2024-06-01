@@ -14,3 +14,9 @@ ON e.assigned_branch_id = b.branch_id;
 -- 3. Show a list of each unique employee title.
 SELECT DISTINCT title
 FROM employee;
+
+-- 4. Show the last name and title of each employee, 
+-- along with the last name and title of that employee's boss.
+SELECT e.last_name, e.title, b.last_name AS "Boss Lastname", b.title AS "Boss Title"
+FROM employee e, employee b
+WHERE e.superior_emp_id = b.emp_id;
