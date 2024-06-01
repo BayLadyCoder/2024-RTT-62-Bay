@@ -11,3 +11,6 @@ FROM branch b
 JOIN employee e
 ON e.assigned_branch_id = b.branch_id;
 
+-- 3. Show a list of each unique employee title.
+SELECT DISTINCT title
+FROM employee;
