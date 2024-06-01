@@ -20,3 +20,10 @@ FROM employee;
 SELECT e.last_name, e.title, b.last_name AS "Boss Lastname", b.title AS "Boss Title"
 FROM employee e, employee b
 WHERE e.superior_emp_id = b.emp_id;
+
+-- 5. For each account, show the name of the account's product, 
+-- the available balance, and the customer's last name.
+SELECT p.name, a.avail_balance, i.last_name
+FROM product p, account a, individual i
+WHERE a.product_cd = p.product_cd AND a.cust_id = i.cust_id;
+
