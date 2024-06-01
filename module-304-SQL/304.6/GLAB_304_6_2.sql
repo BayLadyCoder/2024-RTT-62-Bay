@@ -27,3 +27,9 @@ SELECT p.name, a.avail_balance, i.last_name
 FROM product p, account a, individual i
 WHERE a.product_cd = p.product_cd AND a.cust_id = i.cust_id;
 
+-- 6. List all account transaction details for individual customers whose last name starts with 'T'.
+SELECT * 
+FROM acc_transaction acct, account a, individual i
+WHERE acct.account_id = a.account_id AND a.cust_id = i.cust_id AND i.last_name LIKE "T%";
+
+
