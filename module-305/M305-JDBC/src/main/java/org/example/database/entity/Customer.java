@@ -45,8 +45,8 @@ public class Customer {
     private String country;
 
     @Column(name = "sales_rep_employee_id")
-    private int salesRepEmployeeId;
+    private Integer salesRepEmployeeId;
 
     @Column(name = "credit_limit")
-    private float creditLimit;
+    private Float creditLimit;
 }
