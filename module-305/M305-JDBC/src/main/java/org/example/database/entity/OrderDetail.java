@@ -7,7 +7,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table (name = "orderDetails")
+@Table (name = "orderdetails")
 public class OrderDetail {
     @Id // this is telling hibernate this column is the PK
     @GeneratedValue(strategy = GenerationType.IDENTITY)  // this telling hibernate that the PK is auto increment
