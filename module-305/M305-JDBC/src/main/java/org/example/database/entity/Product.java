@@ -29,7 +29,7 @@ public class Product {
     @Column(name = "product_vendor")
     private String productVendor;
 
-    @Column(name = "product_description")
+    @Column(name = "product_description", length = 65535, columnDefinition = "Text")
     private String productDescription;
 
     @Column(name = "quantity_in_stock")
