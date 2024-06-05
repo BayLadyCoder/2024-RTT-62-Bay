@@ -4,9 +4,14 @@ import java.sql.*;
 import java.util.Scanner;
 
 public class JDBCDemo {
-    public static void main(String[] args) throws ClassNotFoundException { String dburl = "jdbc:mysql://localhost:3306/classic_models"; String user = "root";
+    public static void main(String[] args) throws ClassNotFoundException {
+        String dburl = "jdbc:mysql://localhost:3306/classic_models";
+        String user = "root";
         String password = "changethis";
-        System.out.println("-------- MySQL JDBC Connection Demo ------------"); try {
+
+        System.out.println("-------- MySQL JDBC Connection Demo ------------");
+
+        try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             // Connection connection = DriverManager.getConnection(dburl, user, password); String SelectSQL = "Select * FROM employees WHERE firstname = \"Leslie\"";
             // Connection connection = DriverManager.getConnection(dburl, user, password); String SelectSQL = "Select * FROM employees WHERE firstname = 'Leslie'";
