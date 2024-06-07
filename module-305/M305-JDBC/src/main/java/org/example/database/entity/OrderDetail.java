@@ -1,12 +1,14 @@
 package org.example.database.entity;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 @Getter
 @Setter
 @Entity
+@ToString
+@NoArgsConstructor
+@AllArgsConstructor
 @Table (name = "orderdetails")
 public class OrderDetail {
     @Id // this is telling hibernate this column is the PK
@@ -23,9 +25,9 @@ public class OrderDetail {
     @Column(name = "quantity_ordered")
     private Integer quantityOrdered;
 
-    @Column(name = "price_each")
+    @Column(name = "price_each", columnDefinition = "decimal(10,2)")
     private Float priceEach;
 
-    @Column(name = "order_line_number")
+    @Column(name = "order_line_number", columnDefinition = "smallint")
     private Integer orderLineNumber;
 }
