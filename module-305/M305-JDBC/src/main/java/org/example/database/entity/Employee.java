@@ -1,5 +1,6 @@
 package org.example.database.entity;
 
+import java.util.Set;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -7,12 +8,18 @@ import lombok.*;
 @Getter
 @Entity
 @ToString
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "employees")
 public class Employee {
     @Id // this is telling hibernate this column is the PK
     @GeneratedValue(strategy = GenerationType.IDENTITY)  // this telling hibernate that the PK is auto increment
     @Column(name = "id")
     private Integer id;
+
+    @ToString.Exclude
+    @OneToMany(mappedBy = "employee", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Set<Customer> customers;
 
     @Column(name = "office_id")
     private Integer officeId;
