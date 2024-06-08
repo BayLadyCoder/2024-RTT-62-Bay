@@ -3,6 +3,8 @@ package org.example.database.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.Set;
+
 @Getter
 @Setter
 @Entity
@@ -15,6 +17,10 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)  // this telling hibernate that the PK is auto increment
     @Column(name = "id")
     private Integer id;
+
+    @ToString.Exclude
+    @OneToMany(mappedBy = "product", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Set<OrderDetail> orderDetails;
 
     @Column(name = "product_code", length = 15)
     private String productCode;
