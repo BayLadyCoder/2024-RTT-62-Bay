@@ -1,15 +1,14 @@
 package org.example.database.entity;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.NoArgsConstructor;
-import lombok.AllArgsConstructor;
+import lombok.*;
 import java.util.Date;
+import java.util.Set;
 
 @Getter
 @Setter
 @Entity
+@ToString
 @NoArgsConstructor
 @AllArgsConstructor
 @Table (name = "orders")
@@ -19,8 +18,16 @@ public class Order {
     @Column(name = "id")
     private Integer id;
 
+    @ToString.Exclude
+    @OneToMany(mappedBy = "order", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Set<OrderDetail> orderDetails;
 
-    @Column(name = "customer_id", nullable = false)
+    @ToString.Exclude
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "customer_id", nullable = false)
+    private Customer customer;
+
+    @Column(name = "customer_id", nullable = false, insertable=false, updatable=false)
     private Integer customerId;
 
     @Column(name = "order_date", nullable = false)
@@ -38,7 +45,7 @@ public class Order {
     @Column(name = "status", nullable = false)
     private String status;
 
-    @Column(name = "comment")
-    private String comment;
+    @Column(name = "comments", length = 65535, columnDefinition = "text")
+    private String comments;
 
 }
