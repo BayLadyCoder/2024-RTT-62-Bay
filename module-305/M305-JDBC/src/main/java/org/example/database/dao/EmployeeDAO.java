@@ -2,6 +2,7 @@ package org.example.database.dao;
 
 import org.example.database.entity.Employee;
 import jakarta.persistence.TypedQuery;
+import org.example.database.utils.HibernateUtils;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -12,8 +13,7 @@ public class EmployeeDAO {
 
     public void insert(Employee employee) {
         // these 2 lines of code prepare the hibernate session for use
-        SessionFactory factory = new Configuration().configure().buildSessionFactory();
-        Session session = factory.openSession();
+        Session session = HibernateUtils.getSessionFactory().openSession();
 
         // begin the transaction
         session.getTransaction().begin();
@@ -29,26 +29,28 @@ public class EmployeeDAO {
     }
 
     public void update(Employee employee) {
-        SessionFactory factory = new Configuration().configure().buildSessionFactory();
-        Session session = factory.openSession();
+        Session session = HibernateUtils.getSessionFactory().openSession();
+
         session.getTransaction().begin();
 
         // this is the only line that changed
         session.merge(employee);
 
         session.getTransaction().commit();
+
         session.close();
     }
 
     public void delete(Employee employee) {
-        SessionFactory factory = new Configuration().configure().buildSessionFactory();
-        Session session = factory.openSession();
+        Session session = HibernateUtils.getSessionFactory().openSession();
+
         session.getTransaction().begin();
 
         // this is the only line that changed
         session.delete(employee);
 
         session.getTransaction().commit();
+
         session.close();
     }
 
