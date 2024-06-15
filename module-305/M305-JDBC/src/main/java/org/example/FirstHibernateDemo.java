@@ -2,6 +2,8 @@ package org.example;
 
 import org.example.database.dao.EmployeeDAO;
 import org.example.database.entity.Employee;
+import org.example.database.dao.CustomerDAO;
+import org.example.database.entity.Customer;
 
 import java.util.List;
 
@@ -20,7 +22,6 @@ public class FirstHibernateDemo {
 //        }
 
 
-//        EmployeeDAO employeeDAO = new EmployeeDAO();
 //
 //        // lets create a new employee in the database
 //        Employee newEmployee = new Employee();
@@ -42,16 +43,21 @@ public class FirstHibernateDemo {
 //            System.out.println(employee);
 //        }
 
-        EmployeeDAO employeeDAO = new EmployeeDAO();
+//        CustomerDAO customerDAO = new CustomerDAO();
+//        Customer customer = customerDAO.findById(125);
+//        System.out.println(customer);
+        System.out.println(System.getenv("PASSWORD"));
 
-
-        // this employee id exists in the database and will return a record
-        Employee employee = employeeDAO.findById(1056);
-        System.out.println(employee);
-
-        // this employee id does not exist in the database and will return null
-        // you know your query found a result if it is not null
-        employee = employeeDAO.findById(1);
-        System.out.println(employee);
+//        EmployeeDAO employeeDAO = new EmployeeDAO();
+//
+//
+//        // this employee id exists in the database and will return a record
+//        Employee employee = employeeDAO.findById(1056);
+//        System.out.println(employee);
+//
+//        // this employee id does not exist in the database and will return null
+//        // you know your query found a result if it is not null
+//        employee = employeeDAO.findById(1);
+//        System.out.println(employee);
     }
 }
