@@ -1,0 +1,105 @@
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  font-family: "Oxygen", sans-serif;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+
+header {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0px;
+  background-color: #ffa1eb;
+}
+
+.header-section {
+  width: 90%;
+  max-width: 990px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+h1,
+h2 {
+  font-family: "Playwrite AU TAS", cursive;
+}
+
+h1 {
+  font-size: 30px;
+}
+
+h2: {
+  font-size: 25px;
+}
+
+.linkedin-span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  padding-right: 10px;
+  padding-left: 2px;
+  background-color: #fff5fd;
+}
+
+.linkedin-span:hover {
+  background-color: white;
+  cursor: pointer;
+}
+
+.linkedin-icon {
+  width: 40px;
+}
+
+a {
+  text-decoration: none;
+  color: #0c51c9;
+  font-size: 20px;
+}
+
+.hobby-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffdef8;
+  padding: 20px 50px;
+}
+
+.summary-section {
+  display: flex;
+  flex-direction: column;
+  /* background-color: #ffdef8; */
+  background-color: #d4e9ff;
+  padding: 20px 50px;
+}
+.per-scholas-section {
+  display: flex;
+  flex-direction: column;
+  background-color: #d4e9ff;
+  padding: 20px 50px;
+}
+.w-80 {
+  width: 80%;
+  max-width: 900px;
+}
+
+.my-picture {
+  height: 250px;
+  margin-right: 80px;
+  border-radius: 50%;
+  border: 1px solid #fff;
+}
