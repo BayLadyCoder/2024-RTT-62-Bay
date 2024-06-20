@@ -13,7 +13,7 @@ body {
 }
 
 #resume {
-  width: 1100px;
+  width: 950px;
   background-color: #141414;
   color: rgb(224, 225, 225);
   display: flex;
@@ -35,18 +35,18 @@ header {
 }
 
 #sarah-img {
-  width: 165px;
+  width: 145px;
   border: solid 5px rgb(53, 53, 53);
 }
 
 .title {
-  width: 500px;
+  width: 380px;
   padding: 20px;
 }
 
 .title h1 {
   text-transform: uppercase;
-  font-size: 40px;
+  font-size: 35px;
   font-weight: semi-bold;
 }
 
@@ -58,7 +58,7 @@ header {
 
 .info {
   display: flex;
-  width: 435px;
+  width: 425px;
   font-weight: semi-bold;
   font-size: 15px;
   line-height: 25px;
@@ -76,7 +76,7 @@ header {
 
 .info div:nth-child(2) p {
   margin-left: 8px;
-  color: rgb(107, 103, 104);
+  color: rgb(122, 118, 119);
 }
 .info div:nth-child(2) a {
   color: rgb(57, 134, 178);
@@ -84,8 +84,71 @@ header {
 }
 
 summary {
-  color: rgb(107, 103, 104);
+  color: rgb(122, 118, 119);
   font-weight: bold;
   margin-top: 20px;
   line-height: 25px;
+}
+
+/* experience and education */
+.employment-section-header {
+  display: flex;
+  align-items: center;
+  border-radius: 8px;
+  background-color: rgb(48, 48, 48);
+}
+
+.employment-arrow-down-icon {
+  margin-right: 15px;
+  background: rgb(42, 152, 197);
+  padding: 8px;
+  border-radius: 8px;
+}
+
+.each-experience {
+  padding: 25px 0px;
+  border-bottom: 1px dashed rgb(48, 48, 48);
+}
+
+.each-experience:last-child {
+  border-bottom: none;
+}
+
+.exp-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.exp-header-left {
+  display: flex;
+  align-items: flex-start;
+}
+
+.exp-arrow-right-icon {
+  margin-right: 10px;
+  background: rgb(42, 152, 197);
+  padding: 1px;
+  border-radius: 50%;
+  width: 22px;
+}
+
+.company {
+  font-size: 20px;
+}
+
+.job-title {
+  font-size: 16px;
+  font-weight: normal;
+}
+
+.years {
+  font-size: 22px;
+  color: rgb(76, 76, 76);
+}
+
+.job-title,
+.exp-content,
+.years {
+  color: rgb(122, 118, 119);
 }
