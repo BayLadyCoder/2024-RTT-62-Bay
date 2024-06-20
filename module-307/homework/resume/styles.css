@@ -91,41 +91,56 @@ summary {
 }
 
 /* experience and education */
-.employment-section-header {
+.employment-section {
+  margin-bottom: 30px;
+}
+
+.employment-section-header,
+.education-section-header {
   display: flex;
   align-items: center;
   border-radius: 8px;
   background-color: rgb(48, 48, 48);
 }
 
-.employment-arrow-down-icon {
+.employment-arrow-down-icon,
+.education-arrow-down-icon {
   margin-right: 15px;
   background: rgb(42, 152, 197);
   padding: 8px;
   border-radius: 8px;
 }
 
-.each-experience {
+.education-arrow-down-icon {
+  background: rgb(72, 131, 46);
+}
+
+.each-experience,
+.each-education {
   padding: 25px 0px;
   border-bottom: 1px dashed rgb(48, 48, 48);
 }
 
-.each-experience:last-child {
+.each-experience:last-child,
+.each-education:last-child {
   border-bottom: none;
 }
 
-.exp-header {
+.exp-header,
+.edu-header {
   display: flex;
   justify-content: space-between;
   margin-bottom: 15px;
 }
 
-.exp-header-left {
+.exp-header-left,
+.edu-header-left {
   display: flex;
   align-items: flex-start;
 }
 
-.exp-arrow-right-icon {
+.exp-arrow-right-icon,
+.edu-arrow-right-icon {
   margin-right: 10px;
   background: rgb(42, 152, 197);
   padding: 1px;
@@ -133,11 +148,17 @@ summary {
   width: 22px;
 }
 
-.company {
+.edu-arrow-right-icon {
+  background: rgb(72, 131, 46);
+}
+
+.company,
+.school {
   font-size: 20px;
 }
 
-.job-title {
+.job-title,
+.course {
   font-size: 16px;
   font-weight: normal;
 }
@@ -149,6 +170,7 @@ summary {
 
 .job-title,
 .exp-content,
+.edu-content,
 .years {
   color: rgb(122, 118, 119);
 }
