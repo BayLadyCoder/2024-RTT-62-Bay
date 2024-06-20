@@ -1,0 +1,94 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  /* font-family: "Roboto", sans-serif;
+  background-color: #141414;
+  color: rgb(224, 225, 225);
+  display: flex;
+  flex-direction: column;
+  padding: 40px 35px; */
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+  background-color: #000000;
+  font-family: "Roboto", sans-serif;
+}
+
+#resume {
+  width: 1100px;
+  background-color: #141414;
+  color: rgb(224, 225, 225);
+  display: flex;
+  flex-direction: column;
+  padding: 40px 35px;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.img-title {
+  display: flex;
+}
+
+#sarah-img {
+  width: 165px;
+  border: solid 5px rgb(53, 53, 53);
+}
+
+.title {
+  width: 500px;
+  padding: 20px;
+}
+
+.title h1 {
+  text-transform: uppercase;
+  /* color: rgb(224, 225, 225); */
+  font-size: 40px;
+  font-weight: semi-bold;
+}
+
+.title h2 {
+  color: rgb(57, 134, 178);
+  font-size: 25px;
+  font-weight: normal;
+}
+
+.info {
+  display: flex;
+  width: 435px;
+  font-weight: semi-bold;
+  font-size: 15px;
+  line-height: 25px;
+}
+
+.info div:first-child {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.info div:nth-child(2) {
+  display: flex;
+  flex-direction: column;
+}
+
+.info div:nth-child(2) p {
+  margin-left: 8px;
+  color: rgb(107, 103, 104);
+}
+.info div:nth-child(2) a {
+  color: rgb(57, 134, 178);
+  text-decoration: none;
+}
+
+summary {
+  color: rgb(107, 103, 104);
+  font-weight: bold;
+  margin: 20px 0px;
+  line-height: 25px;
+}
