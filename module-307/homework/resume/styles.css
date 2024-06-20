@@ -90,6 +90,10 @@ summary {
   line-height: 25px;
 }
 
+.content-body-container {
+  display: flex;
+}
+
 /* experience and education */
 .employment-section {
   margin-bottom: 30px;
@@ -173,4 +177,52 @@ summary {
 .edu-content,
 .years {
   color: rgb(122, 118, 119);
+}
+
+/* Sidebar */
+
+aside h3 {
+  text-transform: uppercase;
+  margin-bottom: 30px;
+}
+
+.topic {
+  color: rgb(122, 118, 119);
+  font-weight: bold;
+}
+
+.percent-container {
+  background-color: rgb(76, 76, 76);
+  margin: 10px 0px;
+}
+
+.percentage {
+  text-align: end;
+  font-weight: semi-bold;
+  padding-right: 2px;
+}
+
+#wp-percent {
+  width: 90%;
+  background-color: rgb(23, 112, 157);
+}
+
+#php-percent {
+  width: 80%;
+  background-color: rgb(36, 156, 197);
+}
+
+#html-percent {
+  width: 93%;
+  background: rgb(72, 131, 46);
+}
+
+#css-percent {
+  width: 80%;
+  background: rgb(199, 142, 20);
+}
+
+#mysql-percent {
+  width: 70%;
+  background: rgb(201, 25, 19);
 }
