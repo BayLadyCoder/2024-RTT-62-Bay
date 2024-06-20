@@ -180,10 +180,17 @@ summary {
 }
 
 /* Sidebar */
+aside section {
+  margin-top: 35px;
+}
+
+aside section:first-child {
+  margin-top: 0;
+}
 
 aside h3 {
   text-transform: uppercase;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 
 .topic {
@@ -191,9 +198,11 @@ aside h3 {
   font-weight: bold;
 }
 
+/* Programming Skills */
+
 .percent-container {
   background-color: rgb(76, 76, 76);
-  margin: 10px 0px;
+  margin: 5px 0px;
 }
 
 .percentage {
@@ -225,4 +234,34 @@ aside h3 {
 #mysql-percent {
   width: 70%;
   background: rgb(201, 25, 19);
+}
+
+/* Graphic Skills */
+
+.each-graphic-skill {
+  display: flex;
+  align-items: center;
+  margin: 5px 0px;
+}
+
+.color-box {
+  width: 15px;
+  height: 15px;
+  margin-right: 8px;
+}
+
+#photoshop-box {
+  background-color: rgb(23, 112, 157);
+}
+#illustrator-box {
+  background-color: rgb(36, 156, 197);
+}
+#indesign-box {
+  background-color: rgb(72, 131, 46);
+}
+#corel-draw-box {
+  background-color: rgb(199, 142, 20);
+}
+#three-d-max-box {
+  background-color: rgb(201, 25, 19);
 }
