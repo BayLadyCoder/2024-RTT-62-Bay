@@ -9,6 +9,7 @@ public class IndexController {
     @GetMapping("/")
     public ModelAndView index() {
         ModelAndView response = new ModelAndView("index");
+        response.addObject("message", "Hello World!");
         return response;
     }
 
