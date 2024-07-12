@@ -51,7 +51,9 @@ public class IndexController {
     }
 
     @GetMapping("/search")
-    public ModelAndView search() {
+    public ModelAndView search(@RequestParam(required = false) String search) {
+
+        log.info("Search term is: " + search);
         ModelAndView response = new ModelAndView("search");
         List<Product> products = productDAO.findAll();
         response.addObject("products", products);
