@@ -2,15 +2,18 @@ package com.example.springboot.controller;
 
 import com.example.springboot.database.dao.ProductDAO;
 import com.example.springboot.database.entity.Product;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 
 
+@Slf4j
 @Controller
 public class IndexController {
 
@@ -35,6 +38,10 @@ public class IndexController {
         response.addObject("message", "Hello World!");
         response.addObject("product", product);
 
+        log.debug("Debug level");
+        log.info("Info level");
+        log.warn("Warn level");
+        log.error("Error level");
         return response;
     }
 
