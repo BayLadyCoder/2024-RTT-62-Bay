@@ -9,6 +9,23 @@
     </div>
 </section>
 
+<!-- a search form -->
+<section>
+    <div class="container">
+        <div class="row justify-content-center pt-5 pb-3">
+            <div class="col-8 text-center">
+                <form action="/search">
+                    <div class="mb-3">
+                        <label for="search" class="form-label"><h4>Search</h4></label>
+                        <input type="text" class="form-control" id="search" name="search" placeholder="Enter search term">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Search</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
 <section>
     <div class="container">
         <div class="row pt-5">
