@@ -15,7 +15,6 @@ import java.util.List;
 @Slf4j
 @Controller
 public class IndexController {
-
     @Autowired
     private ProductDAO productDAO;
 
@@ -55,7 +54,8 @@ public class IndexController {
 
         log.info("Search term is: " + search);
         ModelAndView response = new ModelAndView("search");
-        List<Product> products = productDAO.findAll();
+        List<Product> products = productDAO.findByName(search);
+        response.addObject("search", search);
         response.addObject("products", products);
         return response;
     }
