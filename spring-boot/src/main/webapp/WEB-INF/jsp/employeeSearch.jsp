@@ -43,14 +43,16 @@
                         <th>Last Name</th>
                         <th>Email</th>
                         <th>Job Title</th>
+                        <th>Customer List</th>
                     </tr>
                     <c:forEach items="${employees}" var="employee">
-                        <tr  onclick="window.location.href = '/?id=${employee.id}'" class="clickable-row">
+                        <tr  onclick="window.location.href = '/customer/list?employeeId=${employee.id}'" class="clickable-row">
                             <td>${employee.id}</td>
                             <td>${employee.firstname}</td>
                             <td>${employee.lastname}</td>
                             <td>${employee.email}</td>
                             <td>${employee.jobTitle}</td>
+                            <td><a href="/customer/list?employeeId=${employee.id}">See Customer List</a></td>
                         </tr>
                     </c:forEach>
                 </table>
