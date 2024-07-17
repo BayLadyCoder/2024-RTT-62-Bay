@@ -21,7 +21,7 @@
         <h2 class="text-center">Orders Found (${orders.size()})</h2>
 
         <c:forEach items="${orders}" var="order">
-            <tr onclick="window.location.href = '/order/details?customerId=${order.id}'" class="clickable-row">
+            <tr onclick="window.location.href = '/order/detail?orderId=${order.id}'" class="clickable-row">
                 <td>${order.id}</td>
                 <td>${order.customerId}</td>
                 <td>${order.status}</td>
