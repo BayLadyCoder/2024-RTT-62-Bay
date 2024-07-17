@@ -3,6 +3,8 @@ package com.example.springboot.database.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 
 @Getter
 @Setter
@@ -10,16 +12,27 @@ import lombok.*;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-@Table (name = "customers")
+@Table(name = "customers")
 public class Customer {
     @Id // this is telling hibernate this column is the PK
     @GeneratedValue(strategy = GenerationType.IDENTITY)  // this telling hibernate that the PK is auto increment
     @Column(name = "id")
     private Integer id;
 
-    @Column(name = "sales_rep_employee_id")
-    private Integer salesRepEmployeeId;
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
+    @ManyToOne(fetch = FetchType.LAZY, optional = true)
+    @JoinColumn(name = "sales_rep_employee_id", nullable = true)
+    private Employee employee;
 
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
+    @OneToMany(mappedBy = "customer", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Order> orders;
+
+    @Column(name = "sales_rep_employee_id", insertable = false, updatable = false)
+    private Integer salesRepEmployeeId;
+    
     @Column(name = "customer_name")
     private String customerName;
 
@@ -50,6 +63,6 @@ public class Customer {
     @Column(name = "country")
     private String country;
 
-    @Column(name = "credit_limit", columnDefinition="decimal(10,2)")
+    @Column(name = "credit_limit", columnDefinition = "decimal(10,2)")
     private Double creditLimit;
 }

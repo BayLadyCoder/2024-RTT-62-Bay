@@ -2,7 +2,9 @@ package com.example.springboot.database.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+
 import java.util.Date;
+import java.util.List;
 
 @Getter
 @Setter
@@ -10,15 +12,24 @@ import java.util.Date;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-@Table (name = "orders")
+@Table(name = "orders")
 public class Order {
     @Id // this is telling hibernate this column is the PK
     @GeneratedValue(strategy = GenerationType.IDENTITY)  // this telling hibernate that the PK is auto increment
     @Column(name = "id")
     private Integer id;
+    
+    @ToString.Exclude
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "customer_id", nullable = false)
+    private Customer customer;
 
-    @Column(name = "customer_id", nullable = false)
-    private Integer customerId;
+    @ToString.Exclude
+    @OneToMany(mappedBy = "order", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<OrderDetail> orderDetails;
+
+    @Column(name = "customer_id", insertable = false, updatable = false)
+    private int customerId;
 
     @Column(name = "order_date", nullable = false)
     @Temporal(TemporalType.DATE)
