@@ -61,8 +61,8 @@ public class EmployeeController {
         List<Customer> customers = customerDAO.findByEmployeeId(Integer.valueOf(employeeId));
         response.addObject("customers", customers);
 
-        log.info("employeeId is: " + employeeId);
-        log.info("customers is: " + customers.toString());
+        log.info("detail employeeId is: " + employeeId);
+        log.info("detail customers is: " + customers.toString());
 
 
         return response;
@@ -70,7 +70,6 @@ public class EmployeeController {
 
     @GetMapping("/create")
     public ModelAndView createEmployee() {
-
         ModelAndView response = new ModelAndView("createEmployee");
 
         List<Employee> employees = employeeDAO.findAll();
@@ -85,14 +84,15 @@ public class EmployeeController {
     @GetMapping("/createSubmit")
     public ModelAndView createEmployeeSubmit(@Valid CreateEmployeeFormBean form, BindingResult bindingResult) {
         ModelAndView response = new ModelAndView();
-
-        log.info("form is: " + form.toString());
+        log.info("submit form: " + form.toString());
 
         if (bindingResult.hasErrors()) {
             for (ObjectError error : bindingResult.getAllErrors()) {
                 log.info("Validation error : " + ((FieldError) error).getField() + " = " + error.getDefaultMessage());
             }
+
             response.addObject("bindingResult", bindingResult);
+            response.addObject("form", form);
 
             List<Employee> employees = employeeDAO.findAll();
             response.addObject("employees", employees);
@@ -101,31 +101,24 @@ public class EmployeeController {
             response.addObject("offices", offices);
 
             response.setViewName("createEmployee");
-            response.addObject("form", form);
-
-            return response;
-        } else {
-
-
-            Employee employee = new Employee();
-            employee.setEmail(form.getEmail());
-            employee.setFirstname(form.getFirstname());
-            employee.setLastname(form.getLastname());
-            employee.setReportsTo(form.getReportsTo());
-            employee.setExtension(form.getExtension());
-
-            Office office = officeDAO.findById(form.getOfficeId());
-            employee.setOffice(office);
-            employee.setJobTitle(form.getJobTitle());
-            employee.setVacationHours(form.getVacationHours());
-
-            employee = employeeDAO.save(employee);
-
-            response.setViewName("redirect:/employee/detail?employeeId=" + employee.getId());
-
-
             return response;
         }
 
+        Employee employee = new Employee();
+        employee.setEmail(form.getEmail());
+        employee.setFirstname(form.getFirstname());
+        employee.setLastname(form.getLastname());
+        employee.setReportsTo(form.getReportsTo());
+        employee.setExtension(form.getExtension());
+        employee.setJobTitle(form.getJobTitle());
+        employee.setVacationHours(form.getVacationHours());
+
+        Office office = officeDAO.findById(form.getOfficeId());
+        employee.setOffice(office);
+
+        employee = employeeDAO.save(employee);
+
+        response.setViewName("redirect:/employee/detail?employeeId=" + employee.getId());
+        return response;
     }
 }
