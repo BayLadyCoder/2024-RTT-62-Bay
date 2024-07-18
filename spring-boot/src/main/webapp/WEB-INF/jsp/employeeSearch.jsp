@@ -1,5 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<jsp:include page="include/header.jsp" />
+<jsp:include page="include/header.jsp"/>
 
 <section class="title-section">
     <div class="container">
@@ -14,12 +14,13 @@
     <div class="container">
         <div class="row justify-content-center pt-5 pb-3">
             <div class="col-8 text-center d-flex justify-content-center">
-                <form action="/employee/search" >
+                <form action="/employee/search">
                     <div class="mb-3">
-                       <div class="d-flex gap-1 justify-content-center">
-                           <input  style="width: 350px" type="text" value="${search}" class="form-control" id="search" name="search" placeholder="Enter employee name">
-                           <button type="submit" class="btn btn-success">Search</button>
-                       </div>
+                        <div class="d-flex gap-1 justify-content-center">
+                            <input style="width: 350px" type="text" value="${search}" class="form-control" id="search"
+                                   name="search" placeholder="Enter employee name">
+                            <button type="submit" class="btn btn-success">Search</button>
+                        </div>
                     </div>
                 </form>
             </div>
@@ -46,13 +47,14 @@
                         <th>Customers</th>
                     </tr>
                     <c:forEach items="${employees}" var="employee">
-                        <tr onclick="window.location.href = '/customer/list?employeeId=${employee.id}'" class="clickable-row">
+                        <tr onclick="window.location.href = '/employee/detail?employeeId=${employee.id}'"
+                            class="clickable-row">
                             <td>${employee.id}</td>
                             <td>${employee.firstname}</td>
                             <td>${employee.lastname}</td>
                             <td>${employee.email}</td>
                             <td>${employee.jobTitle}</td>
-                            <td><a href="/customer/list?employeeId=${employee.id}">See Customers</a></td>
+                            <td><a href="/employee/detail?employeeId=${employee.id}">See Customers</a></td>
                         </tr>
                     </c:forEach>
                 </table>
@@ -62,4 +64,4 @@
 
 </section>
 
-<jsp:include page="include/footer.jsp" />
+<jsp:include page="include/footer.jsp"/>
