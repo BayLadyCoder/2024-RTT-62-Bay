@@ -5,7 +5,9 @@ import com.example.springboot.database.dao.EmployeeDAO;
 import com.example.springboot.database.dao.OrderDAO;
 import com.example.springboot.database.entity.Customer;
 
+import com.example.springboot.database.entity.Employee;
 import com.example.springboot.database.entity.Order;
+import com.example.springboot.form.CreateCustomerFormBean;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -29,7 +31,7 @@ public class CustomerController {
     @Autowired
     private OrderDAO orderDAO;
 
-    @GetMapping("/details")
+    @GetMapping("/detail")
     public ModelAndView customerDetails(@RequestParam(required = false) String customerId) {
 
         ModelAndView response = new ModelAndView("customerDetails");
@@ -43,6 +45,44 @@ public class CustomerController {
         log.info("customerId is: " + customerId);
         log.info("customer is: " + customer);
 
+
+        return response;
+    }
+
+    @GetMapping("/create")
+    public ModelAndView customerCreate() {
+
+        ModelAndView response = new ModelAndView("createCustomer");
+
+        List<Employee> employees = employeeDAO.findAll();
+        response.addObject("salesRepEmployees", employees);
+
+        return response;
+    }
+
+    @GetMapping("/createSubmit")
+    public ModelAndView createEmployeeSubmit(CreateCustomerFormBean form) {
+        log.info("form is: " + form.toString());
+
+        Customer customer = new Customer();
+        customer.setCustomerName(form.getCustomerName());
+        customer.setContactFirstname(form.getContactFirstname());
+        customer.setContactLastname(form.getContactLastname());
+        customer.setPhone(form.getPhone());
+        customer.setAddressLine1(form.getAddressLine1());
+        customer.setAddressLine2(form.getAddressLine2());
+        customer.setCity(form.getCity());
+        customer.setState(form.getState());
+        customer.setCountry(form.getCountry());
+        customer.setPostalCode(form.getPostalCode());
+
+        Employee employee = employeeDAO.findById(form.getSalesRepEmployeeId());
+        customer.setEmployee(employee);
+
+        customer = customerDAO.save(customer);
+
+        ModelAndView response = new ModelAndView();
+        response.setViewName("redirect:/customer/detail?customerId=" + customer.getId());
 
         return response;
     }
