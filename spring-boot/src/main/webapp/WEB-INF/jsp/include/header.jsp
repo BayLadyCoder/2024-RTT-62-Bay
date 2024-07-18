@@ -30,9 +30,6 @@
                     <a class="nav-link text-center" aria-current="page" href="/">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-center" href="/another-page-url">Another</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link text-center" href="/search">Find Products</a>
                 </li>
                 <li class="nav-item">
@@ -41,6 +38,9 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link text-center" href="/employee/create">Create Employee</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-center" href="/customer/create">Create Customer</a>
                 </li>
             </ul>
         </div>
