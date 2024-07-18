@@ -29,39 +29,78 @@
 
                         <div>
                             <label for="firstNameId" class="col-form-label">First Name</label>
-                            <input type="text" id="firstNameId" name="firstname" class="form-control"
+                            <input type="text" id="firstNameId" name="firstname"
+                                   class="form-control <c:if test="${bindingResult.hasFieldErrors('firstname')}">is-invalid</c:if>"
                                    value="${form.firstname}">
+                            <c:if test="${bindingResult.hasFieldErrors('firstname')}">
+                                <c:forEach items="${bindingResult.getFieldErrors('firstname')}" var="error">
+                                    <div class="text-danger">${error.defaultMessage}</div>
+                                </c:forEach>
+                            </c:if>
                         </div>
                         <div>
                             <label for="lastNameId" class="col-form-label">Last Name</label>
-                            <input type="text" id="lastNameId" name="lastname" class="form-control"
+                            <input type="text" id="lastNameId" name="lastname"
+                                   class="form-control <c:if test="${bindingResult.hasFieldErrors('lastname')}">is-invalid</c:if>"
                                    value="${form.lastname}">
+                            <c:if test="${bindingResult.hasFieldErrors('lastname')}">
+                                <c:forEach items="${bindingResult.getFieldErrors('lastname')}" var="error">
+                                    <div class="text-danger">${error.defaultMessage}</div>
+                                </c:forEach>
+                            </c:if>
                         </div>
                         <div>
                             <label for="jobTitleId" class="col-form-label">Job Title</label>
-                            <input type="text" id="jobTitleId" name="jobTitle" class="form-control">
+                            <input type="text" id="jobTitleId" name="jobTitle" value="${form.jobTitle}"
+                                   class="form-control <c:if test="${bindingResult.hasFieldErrors('jobTitle')}">is-invalid</c:if>">
+                            <c:if test="${bindingResult.hasFieldErrors('jobTitle')}">
+                                <c:forEach items="${bindingResult.getFieldErrors('jobTitle')}" var="error">
+                                    <div class="text-danger">${error.defaultMessage}</div>
+                                </c:forEach>
+                            </c:if>
                         </div>
                         <div>
                             <label for="officeId" class="col-form-label">Office</label>
-                            <select id="officeId" name="officeId" class="form-control">
+                            <select id="officeId" name="officeId"
+                                    class="form-control <c:if test="${bindingResult.hasFieldErrors('officeId')}">is-invalid</c:if>">
+                                <option value="0">- Select Office -</option>
                                 <c:forEach items="${offices}" var="office">
                                     <option value="${office.id}"
                                             <c:if test="${office.id == form.officeId}">selected</c:if>
                                     >${office.city}, ${office.country}</option>
                                 </c:forEach>
                             </select>
+                            <c:if test="${bindingResult.hasFieldErrors('officeId')}">
+                                <c:forEach items="${bindingResult.getFieldErrors('officeId')}" var="error">
+                                    <div class="text-danger">${error.defaultMessage}</div>
+                                </c:forEach>
+                            </c:if>
                         </div>
                         <div>
                             <label for="extensionId" class="col-form-label">Extension</label>
-                            <input type="text" id="extensionId" name="extension" class="form-control">
+                            <input type="text" id="extensionId" name="extension" value="${form.extension}"
+                                   class="form-control <c:if test="${bindingResult.hasFieldErrors('extension')}">is-invalid</c:if>">
+                            <c:if test="${bindingResult.hasFieldErrors('extension')}">
+                                <c:forEach items="${bindingResult.getFieldErrors('extension')}" var="error">
+                                    <div class="text-danger">${error.defaultMessage}</div>
+                                </c:forEach>
+                            </c:if>
                         </div>
                         <div>
                             <label for="vacationHoursId" class="col-form-label">Vacation Hours</label>
-                            <input type="number" id="vacationHoursId" name="vacationHours" class="form-control">
+                            <input type="number" id="vacationHoursId" name="vacationHours" value="${form.vacationHours}"
+                                   class="form-control <c:if test="${bindingResult.hasFieldErrors('vacationHours')}">is-invalid</c:if>">
+                            <c:if test="${bindingResult.hasFieldErrors('vacationHours')}">
+                                <c:forEach items="${bindingResult.getFieldErrors('vacationHours')}" var="error">
+                                    <div class="text-danger">${error.defaultMessage}</div>
+                                </c:forEach>
+                            </c:if>
                         </div>
                         <div>
                             <label for="reportsTo" class="col-form-label">Reports To</label>
-                            <select id="reportsTo" name="reportsTo" class="form-control">
+                            <select id="reportsTo" name="reportsTo"
+                                    class="form-control <c:if test="${bindingResult.hasFieldErrors('reportsTo')}">is-invalid</c:if>">
+                                <option value="0">- Select Supervisor -</option>
                                 <c:forEach items="${employees}" var="employee">
                                     <option
                                             value="${employee.id}"
@@ -71,6 +110,11 @@
                                     </option>
                                 </c:forEach>
                             </select>
+                            <c:if test="${bindingResult.hasFieldErrors('reportsTo')}">
+                                <c:forEach items="${bindingResult.getFieldErrors('reportsTo')}" var="error">
+                                    <div class="text-danger">${error.defaultMessage}</div>
+                                </c:forEach>
+                            </c:if>
                         </div>
                         <div class="mt-5">
                             <button type="submit" class="btn btn-success w-100">Submit</button>
