@@ -104,7 +104,19 @@ public class EmployeeController {
             return response;
         }
 
-        Employee employee = new Employee();
+        Employee employee;
+        Integer employeeId = form.getId();
+        log.info("submit employeeId: " + employeeId);
+
+        boolean isNewEmployee = employeeId == null;
+
+        if (isNewEmployee) {
+            employee = new Employee();
+        } else {
+            employee = employeeDAO.findById(employeeId);
+
+        }
+
         employee.setEmail(form.getEmail());
         employee.setFirstname(form.getFirstname());
         employee.setLastname(form.getLastname());
@@ -121,4 +133,52 @@ public class EmployeeController {
         response.setViewName("redirect:/employee/detail?employeeId=" + employee.getId());
         return response;
     }
+
+
+    @GetMapping("/edit")
+    public ModelAndView editEmployee(@RequestParam(required = false) Integer employeeId) {
+
+        ModelAndView response = new ModelAndView("createEmployee");
+
+        List<Employee> employees = employeeDAO.findAll();
+        response.addObject("employees", employees);
+
+        List<Office> offices = officeDAO.findAll();
+        response.addObject("offices", offices);
+
+
+        log.info("edit employeeId: " + employeeId);
+
+        if (employeeId == null) {
+            return response;
+        }
+
+        Employee employee = employeeDAO.findById(employeeId);
+
+        if (employee == null) {
+            return response;
+        }
+
+        log.info("edit employee: " + employee);
+
+
+        CreateEmployeeFormBean form = new CreateEmployeeFormBean();
+
+        form.setId(employee.getId());
+        form.setEmail(employee.getEmail());
+        form.setFirstname(employee.getFirstname());
+        form.setLastname(employee.getLastname());
+        form.setJobTitle(employee.getJobTitle());
+        form.setOfficeId(employee.getOfficeId());
+        form.setExtension(employee.getExtension());
+        form.setVacationHours(employee.getVacationHours());
+        form.setReportsTo(employee.getReportsTo());
+
+        log.info("edit form: " + form);
+
+        response.addObject("form", form);
+
+        return response;
+    }
+
 }

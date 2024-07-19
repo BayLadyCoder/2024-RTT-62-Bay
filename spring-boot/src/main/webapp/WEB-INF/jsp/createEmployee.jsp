@@ -4,7 +4,14 @@
 <section class="title-section">
     <div class="container">
         <div class="row pt-5 pb-5">
-            <h1 class="text-center">Create Employee</h1>
+            <h1 class="text-center">
+                <c:if test="${empty form.id}">
+                    Create Employee
+                </c:if>
+                <c:if test="${not empty form.id}">
+                    Edit Employee
+                </c:if>
+            </h1>
         </div>
     </div>
 </section>
@@ -15,6 +22,7 @@
             <div class="col-auto justify-content-center">
                 <form class="card" style="width: 500px;" action="/employee/createSubmit">
                     <div class="card-body p-3">
+                        <input type="hidden" name="id" value="${form.id}"/>
                         <div>
                             <label for="emailId" class="col-form-label">Email</label>
                             <input type="text" id="emailId" name="email"
