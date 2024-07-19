@@ -8,6 +8,7 @@ import lombok.ToString;
 @Setter
 @ToString
 public class CreateCustomerFormBean {
+    private Integer id;
     private String customerName;
     private String contactFirstname;
     private String contactLastname;
