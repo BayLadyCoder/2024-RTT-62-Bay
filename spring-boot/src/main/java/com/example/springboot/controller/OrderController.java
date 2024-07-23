@@ -19,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @Slf4j
 @Controller
@@ -44,8 +45,8 @@ public class OrderController {
         return response;
     }
 
-    @GetMapping("/detail")
-    public ModelAndView orderDetail(@RequestParam(required = false) String orderId) {
+    @GetMapping("/detail/bay")
+    public ModelAndView orderDetailBay(@RequestParam(required = false) String orderId) {
 
         ModelAndView response = new ModelAndView("orderDetails");
 
@@ -85,4 +86,32 @@ public class OrderController {
 
         return response;
     }
+
+    @GetMapping("/details")
+    public ModelAndView orderDetails() {
+
+        ModelAndView response = new ModelAndView("allOrderDetails");
+
+        List<Map<String, Object>> orderDetails = orderDAO.getOrderDetails();
+
+        response.addObject("orderDetails", orderDetails);
+        return response;
+
+    }
+
+    @GetMapping("/detail")
+    public ModelAndView orderDetail(Integer orderId) {
+        ModelAndView response = new ModelAndView("orderDetails");
+
+        List<Map<String, Object>> orderDetails = orderDAO.getOrderDetailsByOrderId(orderId);
+
+        log.info("orderId", orderId);
+        log.info("orderDetails", orderDetails);
+
+        response.addObject("orderDetailList", orderDetails);
+        response.addObject("orderTotal", 999);
+
+        return response;
+    }
+
 }
