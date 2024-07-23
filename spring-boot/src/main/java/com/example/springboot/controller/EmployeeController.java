@@ -35,6 +35,15 @@ public class EmployeeController {
     private OfficeDAO officeDAO;
 
 
+    private void addEmployeesAndOfficesToResponse(ModelAndView response) {
+        List<Employee> employees = employeeDAO.findAll();
+        response.addObject("employees", employees);
+
+        List<Office> offices = officeDAO.findAll();
+        response.addObject("offices", offices);
+    }
+
+
     @GetMapping("/search")
     public ModelAndView employeeSearch(@RequestParam(required = false) String search) {
 
@@ -71,20 +80,24 @@ public class EmployeeController {
     @GetMapping("/create")
     public ModelAndView createEmployee() {
         ModelAndView response = new ModelAndView("createEmployee");
-
-        List<Employee> employees = employeeDAO.findAll();
-        response.addObject("employees", employees);
-
-        List<Office> offices = officeDAO.findAll();
-        response.addObject("offices", offices);
+        addEmployeesAndOfficesToResponse(response);
 
         return response;
     }
+
 
     @GetMapping("/createSubmit")
     public ModelAndView createEmployeeSubmit(@Valid CreateEmployeeFormBean form, BindingResult bindingResult) {
         ModelAndView response = new ModelAndView();
         log.info("submit form: " + form.toString());
+
+        if (form.getId() == null) {
+            Employee e = employeeDAO.findByEmailIgnoreCase(form.getEmail());
+
+            if (e != null) {
+                bindingResult.rejectValue("email", "email", "This email is already in use, (Manual check)");
+            }
+        }
 
         if (bindingResult.hasErrors()) {
             for (ObjectError error : bindingResult.getAllErrors()) {
@@ -93,12 +106,7 @@ public class EmployeeController {
 
             response.addObject("bindingResult", bindingResult);
             response.addObject("form", form);
-
-            List<Employee> employees = employeeDAO.findAll();
-            response.addObject("employees", employees);
-
-            List<Office> offices = officeDAO.findAll();
-            response.addObject("offices", offices);
+            addEmployeesAndOfficesToResponse(response);
 
             response.setViewName("createEmployee");
             return response;
@@ -139,13 +147,7 @@ public class EmployeeController {
     public ModelAndView editEmployee(@RequestParam(required = false) Integer employeeId) {
 
         ModelAndView response = new ModelAndView("createEmployee");
-
-        List<Employee> employees = employeeDAO.findAll();
-        response.addObject("employees", employees);
-
-        List<Office> offices = officeDAO.findAll();
-        response.addObject("offices", offices);
-
+        addEmployeesAndOfficesToResponse(response);
 
         log.info("edit employeeId: " + employeeId);
 
@@ -180,5 +182,4 @@ public class EmployeeController {
 
         return response;
     }
-
 }
