@@ -21,6 +21,7 @@
 
     <table class="table table-hover table-striped table-bordered">
         <tr>
+            <th class="text-center">Order ID</th>
             <th class="text-center">Product ID</th>
             <th>Product Name</th>
             <th class="text-end">Quantity</th>
@@ -31,6 +32,7 @@
 
         <c:forEach items="${orderDetailList}" var="orderDetail">
             <tr>
+                <td class="text-center">${orderDetail.order_id}</td>
                 <td class="text-center">${orderDetail.productId}</td>
                 <td>${orderDetail.productName}</td>
                 <td class="text-end">${orderDetail.quantityOrdered}</td>
