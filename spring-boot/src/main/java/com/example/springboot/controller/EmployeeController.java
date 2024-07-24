@@ -15,8 +15,10 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -85,8 +87,9 @@ public class EmployeeController {
         return response;
     }
 
-
-    @GetMapping("/createSubmit")
+    //    @GetMapping("/createSubmit")
+    @PostMapping("/createSubmit")
+//    @RequestMapping(value = "/createSubmit", method = {RequestMethod.POST, RequestMethod.GET})
     public ModelAndView createEmployeeSubmit(@Valid CreateEmployeeFormBean form, BindingResult bindingResult) {
         ModelAndView response = new ModelAndView();
         log.info("submit form: " + form.toString());

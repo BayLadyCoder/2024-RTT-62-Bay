@@ -20,7 +20,7 @@
     <div class="container">
         <div class="row pt-5 justify-content-center">
             <div class="col-auto justify-content-center">
-                <form class="card" style="width: 500px;" action="/employee/createSubmit">
+                <form class="card" style="width: 500px;" action="/employee/createSubmit" method="post">
                     <div class="card-body p-3">
                         <input type="hidden" name="id" value="${form.id}"/>
                         <div>
