@@ -23,6 +23,12 @@
         <p class="fs-5">
             <span class="fw-bold">Vacation:
             </span>${employee.vacationHours} hours</p>
+        <p class="fs-5">
+            <span class="fw-bold">Image</span>
+            <span><img src="${employee.profileImageUrl}"/></span>
+        </p>
+        <a href="/employee/edit?employeeId=${employee.id}">Edit</a>
+        <a href="/file-upload?employeeId=${employee.id}">Upload Profile Image</a>
     </div>
 
     <table class="table table-hover table-striped table-bordered">
