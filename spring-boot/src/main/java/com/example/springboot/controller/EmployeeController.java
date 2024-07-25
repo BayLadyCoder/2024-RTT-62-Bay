@@ -21,6 +21,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.List;
 
 @Slf4j
@@ -128,6 +131,17 @@ public class EmployeeController {
 
         }
 
+        String saveProfileImageName = "./src/main/webapp/assets/img/" + form.getProfileImage().getOriginalFilename();
+        try {
+            Files.copy(form.getProfileImage().getInputStream(), Paths.get(saveProfileImageName), StandardCopyOption.REPLACE_EXISTING);
+        } catch (Exception e) {
+            log.error("Unable to finish reading file", e);
+        }
+
+
+        String url = "/assets/img/" + form.getProfileImage().getOriginalFilename();
+
+        employee.setProfileImageUrl(url);
         employee.setEmail(form.getEmail());
         employee.setFirstname(form.getFirstname());
         employee.setLastname(form.getLastname());
@@ -135,6 +149,7 @@ public class EmployeeController {
         employee.setExtension(form.getExtension());
         employee.setJobTitle(form.getJobTitle());
         employee.setVacationHours(form.getVacationHours());
+
 
         Office office = officeDAO.findById(form.getOfficeId());
         employee.setOffice(office);
@@ -178,6 +193,7 @@ public class EmployeeController {
         form.setExtension(employee.getExtension());
         form.setVacationHours(employee.getVacationHours());
         form.setReportsTo(employee.getReportsTo());
+        form.setProfileImageUrl(employee.getProfileImageUrl());
 
         log.info("edit form: " + form);
 

@@ -20,7 +20,8 @@
     <div class="container">
         <div class="row pt-5 justify-content-center">
             <div class="col-auto justify-content-center">
-                <form class="card" style="width: 500px;" action="/employee/createSubmit" method="post">
+                <form class="card" style="width: 500px;" action="/employee/createSubmit" method="post"
+                      enctype="multipart/form-data">
                     <div class="card-body p-3">
                         <input type="hidden" name="id" value="${form.id}"/>
                         <div>
@@ -123,6 +124,20 @@
                                     <div class="text-danger">${error.defaultMessage}</div>
                                 </c:forEach>
                             </c:if>
+                        </div>
+
+                        <c:if test="${form.id != null}">
+                            <p>
+                                <span class="fw-bold">Profile Image</span>
+                                <span><img width="400" src="${form.profileImageUrl}"/></span>
+                            </p>
+                        </c:if>
+
+                        <div>
+                            <label for="profileImage" class="col-form-label">Upload New Profile Image</label>
+                            <input type="file" id="profileImage" name="profileImage"
+                                   class="form-control"
+                            >
                         </div>
                         <div class="mt-5">
                             <button type="submit" class="btn btn-success w-100">Submit</button>

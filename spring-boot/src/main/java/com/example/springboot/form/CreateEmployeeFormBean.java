@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 import org.hibernate.validator.constraints.Length;
+import org.springframework.web.multipart.MultipartFile;
 
 @Getter
 @Setter
@@ -48,4 +49,8 @@ public class CreateEmployeeFormBean {
 
     @Positive(message = "Office is required")
     private Integer officeId;
+
+    private MultipartFile profileImage;
+    
+    private String profileImageUrl;
 }
