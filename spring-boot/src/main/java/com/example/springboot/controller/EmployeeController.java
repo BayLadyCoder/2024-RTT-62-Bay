@@ -96,7 +96,7 @@ public class EmployeeController {
 
     //    @GetMapping("/createSubmit")
     @PostMapping("/createSubmit")
-//    @RequestMapping(value = "/createSubmit", method = {RequestMethod.POST, RequestMethod.GET})
+    //    @RequestMapping(value = "/createSubmit", method = {RequestMethod.POST, RequestMethod.GET})
     public ModelAndView createEmployeeSubmit(@Valid CreateEmployeeFormBean form, BindingResult bindingResult) {
         ModelAndView response = new ModelAndView();
         log.info("submit form: " + form.toString());
