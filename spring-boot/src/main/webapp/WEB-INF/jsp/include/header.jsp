@@ -45,6 +45,9 @@
                 <li class="nav-item">
                     <a class="nav-link text-center" href="/account/create-account">Create Account</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link text-center" href="/account/login">Log In</a>
+                </li>
             </ul>
         </div>
     </div>
