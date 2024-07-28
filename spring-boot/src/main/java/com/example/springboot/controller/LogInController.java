@@ -5,6 +5,7 @@ import com.example.springboot.database.dao.UserDAO;
 import com.example.springboot.database.entity.Employee;
 import com.example.springboot.database.entity.User;
 import com.example.springboot.form.CreateAccountFormBean;
+import com.example.springboot.form.LogInAccountFormBean;
 import com.example.springboot.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -67,5 +68,12 @@ public class LogInController {
         userService.createUser(form);
         return response;
 
+    }
+
+    @GetMapping("login")
+    public ModelAndView getLogin() {
+        ModelAndView response = new ModelAndView("auth/login");
+
+        return response;
     }
 }
