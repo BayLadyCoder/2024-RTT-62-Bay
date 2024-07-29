@@ -17,10 +17,9 @@ import java.nio.file.StandardCopyOption;
 @Component
 public class EmployeeService {
 
-
     @Autowired
     private EmployeeDAO employeeDAO;
-    
+
     @Autowired
     private OfficeDAO officeDAO;
 
@@ -45,8 +44,7 @@ public class EmployeeService {
         } catch (Exception e) {
             log.error("Unable to finish reading file", e);
         }
-
-
+        
         String url = "/assets/img/" + form.getProfileImage().getOriginalFilename();
 
         employee.setProfileImageUrl(url);
