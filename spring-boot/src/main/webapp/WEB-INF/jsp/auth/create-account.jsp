@@ -17,6 +17,7 @@
         <div class="row pt-5 justify-content-center">
             <div class="col-auto justify-content-center">
                 <form class="card" style="width: 500px;" action="/account/create-account" method="post">
+                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                     <div class="card-body p-3">
                         <input type="hidden" name="id" value="${form.id}"/>
                         <div>

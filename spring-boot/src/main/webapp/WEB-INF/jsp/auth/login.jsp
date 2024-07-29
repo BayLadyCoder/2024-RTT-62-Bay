@@ -16,13 +16,14 @@
     <div class="container">
         <div class="row pt-5 justify-content-center">
             <div class="col-auto justify-content-center">
-                <form class="card" style="width: 500px;" action="/account/login" method="post"
+                <form class="card" style="width: 500px;" action="/account/loginProcessingUrl" method="post"
                       enctype="multipart/form-data">
+                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                     <div class="card-body p-3">
                         <input type="hidden" name="id" value="${form.id}"/>
                         <div>
                             <label for="emailId" class="col-form-label">Email</label>
-                            <input type="text" id="emailId" name="email"
+                            <input type="text" id="emailId" name="username"
                                    class="form-control <c:if test="${bindingResult.hasFieldErrors('email')}">is-invalid</c:if>"
                                    value="${form.email}">
                             <c:if test="${bindingResult.hasFieldErrors('email')}">
