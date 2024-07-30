@@ -13,8 +13,11 @@
 
 
 <section>
-    <div class="container">
-        <div class="row pt-5 justify-content-center">
+    <div class="container pt-3 d-flex align-items-center flex-column">
+        <c:if test="${param['error'] eq ''}">
+            <div class="alert alert-danger d-inline w-40" role="alert">Invalid Username or Password</div>
+        </c:if>
+        <div class="row pt-3 justify-content-center">
             <div class="col-auto justify-content-center">
                 <form class="card" style="width: 500px;" action="/account/loginProcessingUrl" method="post"
                       enctype="multipart/form-data">
