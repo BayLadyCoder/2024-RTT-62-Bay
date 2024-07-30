@@ -1,3 +1,5 @@
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -45,15 +47,20 @@
                 <li class="nav-item">
                     <a class="nav-link text-center" href="/account/create-account">Create Account</a>
                 </li>
-                <li class="nav-item mx-2">
-                    <a class="nav-link text-center btn btn-success fw-bold text-white"
-                       href="/account/loginPageUrl">Log
-                        In</a>
-                </li>
-                <form class="nav-item" action="/account/logout" method="post">
-                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-                    <input class="nav-link btn btn-secondary fw-bold text-white" type="submit" value="Log Out"/>
-                </form>
+                <sec:authorize access="!isAuthenticated()">
+                    <li class="nav-item mx-2">
+                        <a class="nav-link text-center btn btn-success fw-bold text-white"
+                           href="/account/loginPageUrl">Log
+                            In</a>
+                    </li>
+                </sec:authorize>
+                <sec:authorize access="isAuthenticated()">
+                    <form class="nav-item" action="/account/logout" method="post">
+                        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                        <input class="nav-link btn btn-secondary fw-bold text-white" type="submit" value="Log Out"/>
+                    </form>
+                </sec:authorize>
+
             </ul>
         </div>
     </div>
