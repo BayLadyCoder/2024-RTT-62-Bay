@@ -55,6 +55,12 @@
                     </li>
                 </sec:authorize>
                 <sec:authorize access="isAuthenticated()">
+                    <sec:authorize access="hasAuthority('ADMIN')">
+                        <li class="nav-item mx-2">
+                            <a class="nav-link text-center btn btn-success fw-bold text-white"
+                               href="/admin/dashboard">Admin Dashboard</a>
+                        </li>
+                    </sec:authorize>
                     <li class="nav-item">
                         <span class="nav-link text-info"><sec:authentication property="name"/></span>
                     </li>
