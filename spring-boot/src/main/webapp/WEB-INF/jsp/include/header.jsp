@@ -55,6 +55,9 @@
                     </li>
                 </sec:authorize>
                 <sec:authorize access="isAuthenticated()">
+                    <li class="nav-item">
+                        <span class="nav-link text-info"><sec:authentication property="name"/></span>
+                    </li>
                     <form class="nav-item" action="/account/logout" method="post">
                         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                         <input class="nav-link btn btn-secondary fw-bold text-white" type="submit" value="Log Out"/>
