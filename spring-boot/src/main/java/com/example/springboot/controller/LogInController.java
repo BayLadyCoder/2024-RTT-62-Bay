@@ -6,7 +6,9 @@ import com.example.springboot.database.entity.Employee;
 import com.example.springboot.database.entity.User;
 import com.example.springboot.form.CreateAccountFormBean;
 import com.example.springboot.form.LogInAccountFormBean;
+import com.example.springboot.security.AuthenticatedUserUtilities;
 import com.example.springboot.service.UserService;
+import jakarta.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -32,6 +34,9 @@ public class LogInController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private AuthenticatedUserUtilities authenticatedUserUtilities;
+
 
     @GetMapping("create-account")
     public ModelAndView createAccount() {
@@ -41,7 +46,7 @@ public class LogInController {
     }
 
     @PostMapping("create-account")
-    public ModelAndView createAccountSubmit(@Valid CreateAccountFormBean form, BindingResult bindingResult) {
+    public ModelAndView createAccountSubmit(@Valid CreateAccountFormBean form, BindingResult bindingResult, HttpSession session) {
 
         ModelAndView response = new ModelAndView("auth/create-account");
         log.info("submit form: " + form.toString());
@@ -64,6 +69,12 @@ public class LogInController {
         }
 
         userService.createUser(form);
+
+        // Authenticate the user after creating account
+        authenticatedUserUtilities.manualAuthentication(session, form.getEmail(), form.getPassword());
+
+        // redirect to home page
+        response.setViewName("redirect:/");
         return response;
 
     }
