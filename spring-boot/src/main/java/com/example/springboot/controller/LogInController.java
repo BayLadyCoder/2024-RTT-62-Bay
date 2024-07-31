@@ -68,7 +68,8 @@ public class LogInController {
             return response;
         }
 
-        userService.createUser(form);
+        User user = userService.createUser(form);
+        userService.createUserRole(user.getId(), "USER");
 
         // Authenticate the user after creating account
         authenticatedUserUtilities.manualAuthentication(session, form.getEmail(), form.getPassword());
