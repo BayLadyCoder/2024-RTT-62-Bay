@@ -28,6 +28,7 @@ public class UserService {
         UserRole userRole = new UserRole();
         userRole.setUserId(userId);
         userRole.setRoleName(roleName);
+        userRole.setCreateDate(new Date());
 
         userRoleDAO.save(userRole);
 
