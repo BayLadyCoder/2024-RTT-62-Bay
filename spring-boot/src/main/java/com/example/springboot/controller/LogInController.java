@@ -2,16 +2,13 @@ package com.example.springboot.controller;
 
 
 import com.example.springboot.database.dao.UserDAO;
-import com.example.springboot.database.entity.Employee;
 import com.example.springboot.database.entity.User;
 import com.example.springboot.form.CreateAccountFormBean;
-import com.example.springboot.form.LogInAccountFormBean;
 import com.example.springboot.security.AuthenticatedUserUtilities;
 import com.example.springboot.service.UserService;
 import jakarta.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
