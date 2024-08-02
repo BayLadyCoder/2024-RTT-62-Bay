@@ -1,13 +1,15 @@
 package com.example.springboot.controller;
 
+import com.example.springboot.security.AuthenticatedUserUtilities;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.exception.ExceptionUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.resource.NoResourceFoundException;
 
@@ -15,11 +17,13 @@ import org.springframework.web.servlet.resource.NoResourceFoundException;
 @Controller
 @ControllerAdvice
 public class ErrorController {
+    @Autowired
+    AuthenticatedUserUtilities authenticatedUserUtilities;
+
     @ExceptionHandler(NoResourceFoundException.class)
-//    @ExceptionHandler(Exception.class)
     @RequestMapping(value = {"/error/404", "/404"})
     public ModelAndView error404(Exception ex, HttpServletRequest request) {
-        ModelAndView response = new ModelAndView("error/404page");
+        ModelAndView response = new ModelAndView("error/404-page");
 
         log.debug("!!!!!!!!!!!!!!!!!! IN ERROR CONTROLLER : 404 NOT FOUND : " + request.getMethod() + " " + request.getRequestURI());
         log.error("ERROR MESSAGE!! " + ex.getMessage());
@@ -28,5 +32,43 @@ public class ErrorController {
         response.setStatus(HttpStatus.NOT_FOUND);
 
         return response;
+    }
+
+    @ExceptionHandler(Exception.class)
+    public ModelAndView handleAllException(HttpServletRequest request, Exception ex) {
+        log.warn("Error page exception : " + ex.getMessage(), ex);
+
+        ModelAndView response = new ModelAndView("error/500-page");
+
+        if (authenticatedUserUtilities.isUserInRole("ADMIN")) {
+            response.addObject("requestUrl", request.getRequestURI());
+            response.addObject("message", ex.getMessage());
+
+            String stackTrace = getHTMLStackTrace(ExceptionUtils.getStackFrames(ex));
+            response.addObject("stackTrace", stackTrace);
+            if (ex.getCause() != null) {
+                response.addObject("rootCause", ExceptionUtils.getRootCause(ex));
+
+                String rootTrace = getHTMLStackTrace(ExceptionUtils.getRootCauseStackTrace(ex));
+                response.addObject("rootTrace", rootTrace);
+            }
+        }
+
+        return response;
+    }
+
+    private String getHTMLStackTrace(String[] stack) {
+        StringBuffer result = new StringBuffer();
+
+        for (String frame : stack) {
+            // Change this to be your package name
+            if (frame.contains("com.example.springboot")) {
+                result.append(frame.trim().substring(3) + "<br>\n");
+            } else if (frame.contains("Caused by:")) {
+                result.append("Caused By:<br>");
+            }
+        }
+
+        return result.toString();
     }
 }
